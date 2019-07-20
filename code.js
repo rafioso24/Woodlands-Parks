@@ -14,17 +14,16 @@ let residenceHistory =
     ['Waterford Springs', 'Spring, TX'],
     ['The Biltmore', 'Woodlands, TX']
   ];
-let maxValue = residenceHistory.length -1;
+let historyLength = residenceHistory.length;
 console.log('Length of residence History : ' + residenceHistory.length);
-console.log(`MaxValue : ${maxValue}`);
-let errorMsg = `Invalid selection. Please choose a number between 1 and ${maxValue}.`;
+let errorMsg = `Invalid selection. Please choose a number between 1 and ${historyLength}.`;
 
 //Logging Practice
 console.log(residenceHistory);
 myHistory(oldApartment, apartment);
 
 //Set prompt message
-document.getElementById("numberEntryPrompt").innerHTML = `Enter a Number 1 through ${maxValue} to look up location of residence`;
+document.getElementById("numberEntryPrompt").innerHTML = `Enter a Number 1 through ${historyLength} to look up location of residence`;
 
 //HTML Button and Form Input
 const submitButton = document.querySelector('button');
@@ -38,13 +37,13 @@ function myHistory(apt1, apt2){
 }
 
 function retrieveLocation() {
-  if(inputNumber.value > maxValue){
+  if(inputNumber.value > historyLength){
   	console.log(errorMsg);
   	document.getElementById("resultingText").innerHTML = errorMsg;
   }
   else{
   	console.log(document.getElementById('inputNumber').value);
- 	document.getElementById("resultingText").innerHTML = 'Residence number ' + inputNumber.value + ' was ' + residenceHistory[inputNumber.value][0];
+ 	document.getElementById("resultingText").innerHTML = 'Residence number ' + inputNumber.value + ' was ' + residenceHistory[inputNumber.value -1][0];
   }
 }
 
