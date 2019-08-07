@@ -12,7 +12,7 @@ let residenceHistory =
     ['MLK TownHome', 'Austin, TX'],
     ['St. Joseph House', 'Gainesville, FL'],
     ['Waterford Springs', 'Spring, TX'],
-    ['The Biltmore', 'Woodlands, TX']
+    ['The Biltmore', 'The Woodlands, TX']
   ];
 let historyLength = residenceHistory.length;
 console.log('Length of residence History : ' + residenceHistory.length);
