@@ -4,36 +4,79 @@
 let apartment = 'The Biltmore'; 
 let oldApartment = 'Waterford Springs';
 let residenceHistory = 
-  [ ['Casa Moas', 'Miami FL'], 
+  [ ['Casa Moas', 'Miami, FL'], 
     ['Lakeside complex','Gainesville, FL'],
-    ['Sledd Hall', 'Gainesville, FL'],
+    ['Sledd Hall', '191 Fletcher Dr. Gainesville, FL'],
     ['Retreat at City Park', 'Houston, TX'],
     ['Keys Complex', 'Gainesville, FL'],
     ['MLK TownHome', 'Austin, TX'],
     ['St. Joseph House', 'Gainesville, FL'],
-    ['Waterford Springs', 'Spring, TX'],
-    ['The Biltmore', 'The Woodlands, TX']
+    ['Waterford Springs', '24530 Gosling Rd, Spring, TX 77389'],
+    ['The Biltmore', '10600 Six Pines Dr.']
   ];
 let historyLength = residenceHistory.length;
-console.log('Length of residence History : ' + residenceHistory.length);
 let errorMsg = `Invalid selection. Please choose a number between 1 and ${historyLength}.`;
-
-//Logging Practice
-console.log(residenceHistory);
-myHistory(oldApartment, apartment);
+let gpsArray = null;
+let myMap = null;
+createMap();
+console.log('calling addr_search');
 
 //Set prompt message
 document.getElementById("numberEntryPrompt").innerHTML = `Enter a Number 1 through ${historyLength} to look up location of residence`;
 
 //HTML Button and Form Input
 const submitButton = document.querySelector('button');
-submitButton.addEventListener('click', retrieveLocation, false);
+submitButton.addEventListener('click', updatePageWithAddress, false);
 
 //Functions
-function myHistory(apt1, apt2){     
-	let result = `I used to live at ${apt1} but now I live at ${apt2}.`;     
-	console.log(result);     
-	return result; 
+function createMap(){
+  console.log('create map function');
+  myMap = L.map('mapid').setView([30.152970,-95.461630], 13);
+  console.log('map has been set to Lat and long. Attempting API call...');
+
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoicmFmaW9zbyIsImEiOiJjazB2dGI3cjAxMmt4M2NyMWRyMHlma2xkIn0.JfzRqWFf6cx6wo_Pd2w28Q'
+  }).addTo(myMap);
+
+  console.log('API Call successful. Tile Layer Added.');
+  let biltmoreMarker = L.marker([30.152970,-95.461630]).addTo(myMap);
+}
+
+function addMapPoint(gpsArrayResult){
+  gpsArray = JSON.parse(gpsArrayResult);
+  console.log("Lat long results : " + gpsArray[0].lat + " " + gpsArray[0].lon);
+  console.log("tamaracAddress :  " + gpsArrayResult);
+  myMap.setView([gpsArray[0].lat,gpsArray[0].lon], 13);
+  let pointMarker = L.marker([gpsArray[0].lat,gpsArray[0].lon]).addTo(myMap);
+}
+
+function addr_search(callback, address) {
+  console.log("starting get request for addr_search");
+  let xmlhttp = new XMLHttpRequest();
+  const url = "https://nominatim.openstreetmap.org/search?format=json&limit=3&q=" + address;
+  xmlhttp.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200){ //request is done and success
+      callback(xmlhttp.responseText);
+    }
+  };
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+  console.log("GET request sent for addr_search");
+}
+
+function updatePageWithAddress(){
+  console.log('updatePageWithAddress');
+  retrieveLocation();
+  updateMap();
+}
+
+function updateMap(){
+  let addr = residenceHistory[inputNumber.value -1][1]
+  console.log('updateMap function : residence location is ' + addr);
+  addr_search(addMapPoint, addr);
 }
 
 function retrieveLocation() {
@@ -43,7 +86,7 @@ function retrieveLocation() {
   }
   else{
   	console.log(document.getElementById('inputNumber').value);
- 	document.getElementById("resultingText").innerHTML = 'Residence number ' + inputNumber.value + ' was ' + residenceHistory[inputNumber.value -1][0];
+ 	  document.getElementById("resultingText").innerHTML = 'Residence number ' + inputNumber.value + ' was ' + residenceHistory[inputNumber.value -1][0];
   }
 }
 
