@@ -11,6 +11,8 @@
   <title>Learning JavaScript</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link href="style.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -18,10 +20,101 @@
    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
    crossorigin=""></script>
-  <H1>  </H1>
 </head>
 <body>
- 	<H2> Residence History </H2>
+
+
+<!- hero---------------------------------------->
+  <section class="hero is-primary">  
+    <div class ="container">
+      <div class="hero-body">
+        <h1 class="title is-1"> Residence History </h1>
+        <h2 class ="subtitle"> Map where you've lived </h2>
+      </div>
+
+    </div>
+  </section>
+
+<!- columns---------------------------------------->
+
+  <div class = "columns">
+    <div class="column">
+      <div class="card">
+        <div class="card-content">
+          <h2 class="title"> Quote </h2>
+          <h2 class="subtitle"> Author </h2>
+        </div>
+        <footer class="card-footer">
+          <div class="card-footer-item">
+            <a href="a" class="button is-success">
+              <i class="fas fa-check-square"></i>
+            </a>
+          </div>
+          <div class="card-footer-item">
+            <a href="a" class="button is-danger">
+              <i class="fas fa-exclamation-triangle"></i>
+            </a>
+          </div>
+          <div class="card-footer-item " >
+            <a href="a" class="button is-info ">
+              <i class="fas fa-info-circle"></i>
+            </a>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card">
+        <div class="card-content">
+          <h2 class="title"> Quote </h2>
+          <h2 class="subtitle"> Author </h2>
+        </div>
+        <footer class="card-footer">
+          <div class="card-footer-item">
+            <a href="a" class="button is-success">
+              <i class="fas fa-check-square"></i>
+            </a>
+          </div>
+          <div class="card-footer-item">
+            <a href="a" class="button is-danger">
+              <i class="fas fa-exclamation-triangle"></i>
+            </a>
+          </div>
+          <div class="card-footer-item " >
+            <a href="a" class="button is-info ">
+              <i class="fas fa-info-circle"></i>
+            </a>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card">
+        <div class="card-content">
+          <h2 class="title"> Quote </h2>
+          <h2 class="subtitle"> Author </h2>
+        </div>
+        <footer class="card-footer">
+          <div class="card-footer-item">
+            <a href="a" class="button is-success">
+              <i class="fas fa-check-square"></i>
+            </a>
+          </div>
+          <div class="card-footer-item">
+            <a href="a" class="button is-danger">
+              <i class="fas fa-exclamation-triangle"></i>
+            </a>
+          </div>
+          <div class="card-footer-item " >
+            <a href="a" class="button is-info ">
+              <i class="fas fa-info-circle"></i>
+            </a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+  </div>
  	
 	<table style="width:50%" id = "mainTable"> </table>
 	<body onload='createTable();'>
