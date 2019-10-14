@@ -8,7 +8,8 @@
 </style>
 <head>
   <meta charset="utf-8">
-  <title>Learning JavaScript</title>
+  <title>Mailbox</title>
+  <link rel="shortcut icon" type="image/png" href="images/mailbox.png"/>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
@@ -21,111 +22,52 @@
    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
    crossorigin=""></script>
 </head>
+
 <body>
-
-
 <!- hero---------------------------------------->
   <section class="hero is-primary">  
     <div class ="container">
       <div class="hero-body">
-        <h1 class="title is-1"> Residence History </h1>
-        <h2 class ="subtitle"> Map where you've lived </h2>
+        <h1 class="title is-1"> Mailbox </h1>
+        <h2 class ="subtitle"> Real Estate Location Services </h2>
       </div>
-
     </div>
   </section>
 
-<!- columns---------------------------------------->
+<!- Page Columns---------------------------------------->
+  <section class="section">
+    <div class="columns">
+      <div class="column is-three-quarters">
+        <!- Map Column---------------------------------------->
+        <div id="mapid"></div>
+      </div>
 
-  <div class = "columns">
-    <div class="column">
-      <div class="card">
-        <div class="card-content">
-          <h2 class="title"> Quote </h2>
-          <h2 class="subtitle"> Author </h2>
-        </div>
-        <footer class="card-footer">
-          <div class="card-footer-item">
-            <a href="a" class="button is-success">
-              <i class="fas fa-check-square"></i>
-            </a>
-          </div>
-          <div class="card-footer-item">
-            <a href="a" class="button is-danger">
-              <i class="fas fa-exclamation-triangle"></i>
-            </a>
-          </div>
-          <div class="card-footer-item " >
-            <a href="a" class="button is-info ">
-              <i class="fas fa-info-circle"></i>
-            </a>
-          </div>
-        </footer>
+      <div class="column" id ="rightColumn">
+        <!- Address Tile Column---------------------------------------->
+        <body onload='createTiles();'>
+        <div class="tile is-ancestor" id ="mainTileList"></div>
       </div>
     </div>
-    <div class="column">
-      <div class="card">
-        <div class="card-content">
-          <h2 class="title"> Quote </h2>
-          <h2 class="subtitle"> Author </h2>
-        </div>
-        <footer class="card-footer">
-          <div class="card-footer-item">
-            <a href="a" class="button is-success">
-              <i class="fas fa-check-square"></i>
-            </a>
-          </div>
-          <div class="card-footer-item">
-            <a href="a" class="button is-danger">
-              <i class="fas fa-exclamation-triangle"></i>
-            </a>
-          </div>
-          <div class="card-footer-item " >
-            <a href="a" class="button is-info ">
-              <i class="fas fa-info-circle"></i>
-            </a>
-          </div>
-        </footer>
-      </div>
-    </div>
-    <div class="column">
-      <div class="card">
-        <div class="card-content">
-          <h2 class="title"> Quote </h2>
-          <h2 class="subtitle"> Author </h2>
-        </div>
-        <footer class="card-footer">
-          <div class="card-footer-item">
-            <a href="a" class="button is-success">
-              <i class="fas fa-check-square"></i>
-            </a>
-          </div>
-          <div class="card-footer-item">
-            <a href="a" class="button is-danger">
-              <i class="fas fa-exclamation-triangle"></i>
-            </a>
-          </div>
-          <div class="card-footer-item " >
-            <a href="a" class="button is-info ">
-              <i class="fas fa-info-circle"></i>
-            </a>
-          </div>
-        </footer>
-      </div>
-    </div>
-
-  </div>
- 	
+  </section>
+<!- Table---------------------------------------->
 	<table style="width:50%" id = "mainTable"> </table>
 	<body onload='createTable();'>
 
-  	<H2> Input Form  </H2>
-  	<H3 id = "numberEntryPrompt"></H3>
+	<H2> Input Form  </H2>
+	<H3 id = "numberEntryPrompt"></H3>
 
-  	<input class="textbox" type="number" id="inputNumber">
-		<button class="Button">Submit</button>
-		<p id="resultingText"></p>
-	 <div id="mapid"></div>
+	<input class="textbox" type="number" id="inputNumber">
+	<button class="Button">Submit</button>
+	<p id="resultingText"></p>
+
+<!- Footer---------------------------------------->
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Mailbox</strong> by Rafael Moas. The source code is licensed
+      </p>
+    </div>
+</footer>
 </body>
 <script src="code.js"></script>
 </html>

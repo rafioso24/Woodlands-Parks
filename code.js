@@ -110,3 +110,22 @@ function createTable(){
   console.log(table);
   document.getElementById("mainTable").innerHTML = table;
 }
+function createTiles(){
+  console.log('creating address tiles...');
+  let tileList = '<div class="tile is-ancestor"><div class="tile is-vertical is-12">';
+  let rows = residenceHistory.length;
+  for (i = 0; i<residenceHistory.length; i++){
+    tileList += '<div class="tile"><div class="tile is-child box"><figure class="image is-5x3">';
+    let name = residenceHistory[i][0];
+    let location = residenceHistory[i][1];
+    let rank = i+1;
+    tileList += '<img src="https://www.whitehouse.gov/wp-content/uploads/2017/12/P20170614JB-0303-2-1920x720.jpg"></figure>';
+    tileList += '<article class="media"><div class="media-left"><p class="title">$400,000</p></div>';
+    tileList += '<div class="media-content"><div class="content"><p>4bds | 5 ba | 1,880 sqft</p></div></div></article>';     
+    tileList += `<strong>${location}</strong></div>`;       
+    tileList += '</div>';
+  }  
+  tileList+= '</div></div>';
+  console.log(tileList);
+  document.getElementById("mainTileList").innerHTML = tileList;
+}
