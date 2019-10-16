@@ -21,6 +21,7 @@
    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
    crossorigin=""></script>
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 
 <body>
@@ -34,21 +35,33 @@
     </div>
   </section>
 
-<!- Page Columns---------------------------------------->
-  <section class="section">
-    <div class="columns">
-      <div class="column is-three-quarters">
-        <!- Map Column---------------------------------------->
-        <div id="mapid"></div>
-      </div>
-
-      <div class="column" id ="rightColumn">
-        <!- Address Tile Column---------------------------------------->
-        <body onload='createTiles();'>
-        <div class="tile is-ancestor" id ="mainTileList"></div>
+<!- mapList Button---------------------------------------->
+  <div class="level-right">
+    <div class= "level-item">
+      <div class="buttons has-addons is-right">
+      <a class="button is-info is-medium is-hidden-desktop" onclick="mapListButtonClick()" id ="mapListButton">Map</a>
       </div>
     </div>
-  </section>
+  </div>
+
+
+  <!- Page Columns---------------------------------------->
+  <div class="columns">
+
+    <div class="column is-three-quarters is-hidden-touch" id ="mapColumn">
+      <!- Map Column---------------------------------------->
+      <br>
+      <div id="mapid"></div>
+    </div>
+    <div class="column" id ="listColumn">
+      <!- Address Tile Column---------------------------------------->
+      <br>
+      <body onload='createTiles();'>
+      <div class="tile is-ancestor" id ="mainTileList"></div>
+    </div>
+  </div>
+  
+
 <!- Table---------------------------------------->
 	<table style="width:50%" id = "mainTable"> </table>
 	<body onload='createTable();'>

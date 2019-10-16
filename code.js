@@ -19,13 +19,12 @@ let errorMsg = `Invalid selection. Please choose a number between 1 and ${histor
 let gpsArray = null;
 let myMap = null;
 createMap();
-console.log('calling addr_search');
 
 //Set prompt message
 document.getElementById("numberEntryPrompt").innerHTML = `Enter a Number 1 through ${historyLength} to look up location of residence`;
 
 //HTML Button and Form Input
-const submitButton = document.querySelector('button');
+const submitButton = document.querySelector('Button');
 submitButton.addEventListener('click', updatePageWithAddress, false);
 
 //Functions
@@ -94,7 +93,6 @@ function createTable(){
   console.log('creating table...');
   let table = '<table style="width:50%" ><tr><th>Number</th><th>Name</th><th>Location</th></tr>';
   let rows = residenceHistory.length;
-  let columns = 3;
   for (i = 0; i<residenceHistory.length; i++){
     table += '<tr>';
     let name = residenceHistory[i][0];
@@ -112,13 +110,14 @@ function createTable(){
 }
 function createTiles(){
   console.log('creating address tiles...');
-  let tileList = '<div class="tile is-ancestor"><div class="tile is-vertical is-12">';
+  let tileList = '<div class="tile is-ancestor"><div class="tile is-vertical is-12" id="parentTile">';
   let rows = residenceHistory.length;
   for (i = 0; i<residenceHistory.length; i++){
-    tileList += '<div class="tile"><div class="tile is-child box"><figure class="image is-5x3">';
     let name = residenceHistory[i][0];
     let location = residenceHistory[i][1];
-    let rank = i+1;
+    let tileID =  i+1;
+    let tileName = "addressTile" + tileID;
+    tileList += `<div class="tile" id = "${tileName}"><div class="tile is-child box"><figure class="image is-5x3">`;
     tileList += '<img src="https://www.whitehouse.gov/wp-content/uploads/2017/12/P20170614JB-0303-2-1920x720.jpg"></figure>';
     tileList += '<article class="media"><div class="media-left"><p class="title">$400,000</p></div>';
     tileList += '<div class="media-content"><div class="content"><p>4bds | 5 ba | 1,880 sqft</p></div></div></article>';     
@@ -129,3 +128,32 @@ function createTiles(){
   console.log(tileList);
   document.getElementById("mainTileList").innerHTML = tileList;
 }
+
+$(document).on("click", "div.tile" , function() {
+  $(this).fadeOut();
+});
+
+function mapListButtonClick(){
+  console.log('maplistbutton clicked.');
+  let mapListButton = document.getElementById("mapListButton");
+  console.log('mapLIstButton variable: ' + mapListButton.value);
+  let mapColumn = document.getElementById("mapColumn");
+  let listColumn = document.getElementById("listColumn");
+  
+  if(mapListButton.innerHTML === 'Map'){
+    mapListButton.innerHTML="List";
+    mapColumn.classList.toggle("is-hidden-touch");
+    listColumn.classList.toggle("is-hidden-touch");
+
+    mapColumn.classList.toggle("is-three-quarters");
+  }
+  else{ //mapListButton === List
+    mapListButton.innerHTML="Map";
+    mapColumn.classList.toggle("is-hidden-touch");
+    listColumn.classList.toggle("is-hidden-touch");
+
+    mapColumn.classList.toggle("is-three-quarters");
+
+  }
+}
+
