@@ -103,6 +103,8 @@ function mapListButtonClick(){
     listColumn.classList.toggle("is-hidden-touch");
     mapColumn.classList.toggle("is-three-quarters");
   }
+  //re-size map to new container with 500 millisecond wait
+  setTimeout(function(){ myMap.invalidateSize()}, 500);
 }
 
 
