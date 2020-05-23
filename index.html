@@ -2,13 +2,13 @@
 
 <html lang="en">
 <style>
-	table, th, td {
- 	 border: 1px solid black;
+table, th, td {
+ border: 1px solid black;
 }
 </style>
 <head>
   <meta charset="utf-8">
-  <title>Mailbox</title>
+  <title>Woodlands Parks</title>
   <link rel="shortcut icon" type="image/png" href="images/mailbox.png"/>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
@@ -16,71 +16,234 @@
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link href="style.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
-   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-   crossorigin=""></script>
-   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+  integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+  crossorigin=""></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 </head>
 
 <body>
-<!- hero---------------------------------------->
+  <!- hero---------------------------------------->
   <section class="hero is-primary">  
     <div class ="container">
       <div class="hero-body">
-        <h1 class="title is-1"> Mailbox </h1>
-        <h2 class ="subtitle"> Real Estate Location Services </h2>
+        <h1 class="title is-1"> Woodlands Parks </h1>
+        <h2 class ="subtitle" "is-center"> Find your dream park. </h2>
       </div>
     </div>
   </section>
 
-<!- mapList Button---------------------------------------->
+  <!- mapList Button---------------------------------------->
   <div class="level-right">
     <div class= "level-item">
       <div class="buttons has-addons is-right">
-      <a class="button is-info is-medium is-hidden-desktop" onclick="mapListButtonClick()" id ="mapListButton">Map</a>
+        <a class="button is-info is-medium is-hidden-desktop" onclick="mapListButtonClick()" id ="mapListButton">Map</a>
       </div>
     </div>
   </div>
 
-
-  <!- Page Columns---------------------------------------->
-  <div class="columns">
-
-    <div class="column is-three-quarters is-hidden-touch" id ="mapColumn">
-      <!- Map Column---------------------------------------->
-      <br>
-      <div id="mapid"></div>
+  <!- Checkboxes and Dropdown Container ---------------------------------------->
+  <div class="notification">
+    <div class="dropdown is-hoverable" id="Sports">
+      <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+          <span>Sports</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="basketball" onclick="refreshParks()"> Basketball Court</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="soccer" onclick="refreshParks()"> Soccer Field</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="volleyball" onclick="refreshParks()"> Volleyball Court</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="tennis" onclick="refreshParks()"> Tennis Court</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="disk" onclick="refreshParks()"> Disk Golf</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="skate" onclick="refreshParks()"> Skate Park</label>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="column" id ="listColumn">
-      <!- Address Tile Column---------------------------------------->
-      <br>
-      <body onload='createTiles();'>
-      <div class="tile is-ancestor" id ="mainTileList"></div>
+    <div class="dropdown is-hoverable" id="Kids">
+      <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+          <span>Kids</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="playground" onclick="refreshParks()"> Playground</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="beltswing" onclick="refreshParks()"> Belt Swings</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="bucketswing" onclick="refreshParks()"> Bucket Swings</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="waterpark" onclick="refreshParks()"> Water Park</label>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+    <div class="dropdown is-hoverable" id="Amenities">
+      <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+          <span>Amenities</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="waterfountain" onclick="refreshParks()"> Water Fountain</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="grills" onclick="refreshParks()"> Grills</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="pavilion" onclick="refreshParks()"> Pavilion/Gazebo</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="bathrooms" onclick="refreshParks()"> Bathrooms</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="lake" onclick="refreshParks()"> Lake/Pond</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="picnic" onclick="refreshParks()"> Picnic Tables</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="dogpark" onclick="refreshParks()"> Dog Park<label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="parkinglot" onclick="refreshParks()"> Parking Lot<label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dropdown is-hoverable" id="Size">
+      <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+          <span>Size</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="small" onclick="refreshParks()"> Small</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="medium" onclick="refreshParks()"> Medium</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="large" onclick="refreshParks()"> Large</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dropdown is-hoverable" id="Village">
+      <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+          <span>Village</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="alden" onclick="refreshParks()"> Alden Bridge</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="cochran" onclick="refreshParks()"> Cochran's Crossing</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="college" onclick="refreshParks()"> College Park</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="creekside" onclick="refreshParks()"> Creekside Park</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="grogans" onclick="refreshParks()"> Grogan's Mill</label>
+          </div>
+            <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="indian" onclick="refreshParks()"> Indian Springs</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="panther" onclick="refreshParks()"> Panther Creek</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="research" onclick="refreshParks()"> Research Forest</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="sterling" onclick="refreshParks()"> Sterling Ridge</label>
+          </div>
+          <div class="dropdown-item">
+            <label class="checkbox"><input type="checkbox" name="checkbox" id="town" onclick="refreshParks()"> Town Center</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="button is-danger is-outlined" onclick="clearFilters()">
+      <span>Clear Filters</span>
+      <span class="icon is-small">
+        <i class="fas fa-times"></i>
+      </span>
+    </button>
+</div>
   
 
-<!- Table---------------------------------------->
-	<table style="width:50%" id = "mainTable"> </table>
-	<body onload='createTable();'>
+    <!- Page Columns---------------------------------------->
+    <div class="columns">
 
-	<H2> Input Form  </H2>
-	<H3 id = "numberEntryPrompt"></H3>
+      <div class="column is-three-quarters is-hidden-touch" id ="mapColumn">
+        <!- Map Column---------------------------------------->
+        <div id="mapid"></div>
+      </div>
+      <div class="column" id ="listColumn">
+        <!- Address Tile Column---------------------------------------->
+        <body onload='createTiles(parks);'>
+          <div class="tile is-ancestor" id ="mainTileList"></div>
+        </div>
+      </div>
 
-	<input class="textbox" type="number" id="inputNumber">
-	<button class="Button">Submit</button>
-	<p id="resultingText"></p>
-
-<!- Footer---------------------------------------->
-  <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        <strong>Mailbox</strong> by Rafael Moas. The source code is licensed
-      </p>
-    </div>
-</footer>
-</body>
-<script src="code.js"></script>
-</html>
+       <!- Footer---------------------------------------->
+       <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Mailbox</strong> by Rafael Moas. The source code is licensed
+          </p>
+        </div>
+      </footer>
+    </body>
+    <script src="map_functions.js"></script>
+    <script src="list_functions.js"></script>
+    <script src="filter_functions.js"></script>
+    <script src="main.js"></script>
+    </html>
