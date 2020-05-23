@@ -1,5 +1,5 @@
 #mapid { height: 70vh; width:100% ;z-index: 2}
-#mainTileList{height: 70vh; overflow: auto} 
+#mainTileList{height: 70vh; width:97%; margin:auto; overflow: auto} 
 
 #dropdown{   z-index: 3}
 .body { height : 90vh; }
