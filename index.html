@@ -26,6 +26,7 @@ table, th, td {
 </head>
 
 <body>
+
   <!- hero---------------------------------------->
   <section class="hero is-primary">  
     <div class ="container">
@@ -36,16 +37,7 @@ table, th, td {
     </div>
   </section>
 
-  <!- mapList Button---------------------------------------->
-  <div class="level-right">
-    <div class= "level-item">
-      <div class="buttons has-addons is-right">
-        <a class="button is-info is-medium is-hidden-desktop" onclick="mapListButtonClick()" id ="mapListButton">Map</a>
-      </div>
-    </div>
-  </div>
-
-  <!- Checkboxes and Dropdown Container ---------------------------------------->
+  <!- Navigation Menu and Map/List Toggle Button ---------------------------------------->
   <div class="notification">
     <div class="dropdown is-hoverable" id="Sports">
       <div class="dropdown-trigger">
@@ -216,32 +208,32 @@ table, th, td {
         <i class="fas fa-times"></i>
       </span>
     </button>
-</div>
+    <button class="button is-info is-hidden-desktop" style="float:right;" onclick="mapListButtonClick()" id ="mapListButton"> Map </button>
+  </div>
   
+  <!- Page Columns---------------------------------------->
+  <div class="columns" id="mainColumns">
 
-    <!- Page Columns---------------------------------------->
-    <div class="columns">
-
-      <div class="column is-three-quarters is-hidden-touch" id ="mapColumn">
-        <!- Map Column---------------------------------------->
-        <div id="mapid"></div>
+    <div class="column is-three-quarters is-hidden-touch" id ="mapColumn">
+      <!- Map Column---------------------------------------->
+      <div id="mapid"></div>
+    </div>
+    <div class="column" id ="listColumn">
+      <!- Address Tile Column---------------------------------------->
+      <body onload='createTiles(parks);'>
+        <div class="tile is-ancestor" id ="mainTileList"></div>
       </div>
-      <div class="column" id ="listColumn">
-        <!- Address Tile Column---------------------------------------->
-        <body onload='createTiles(parks);'>
-          <div class="tile is-ancestor" id ="mainTileList"></div>
-        </div>
-      </div>
+  </div>
 
-       <!- Footer---------------------------------------->
-       <footer class="footer">
-        <div class="content has-text-centered">
-          <p>
-            <strong>Mailbox</strong> by Rafael Moas. The source code is licensed
-          </p>
-        </div>
-      </footer>
-    </body>
+  <!- Footer---------------------------------------->
+  <footer class="footer">
+  <div class="content has-text-centered">
+      <strong>Woodlands Parks</strong> by Rafael Moas. The source code is licensed
+  </div>
+  </footer>
+
+</body>
+
     <script src="map_functions.js"></script>
     <script src="list_functions.js"></script>
     <script src="filter_functions.js"></script>

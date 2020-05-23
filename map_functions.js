@@ -38,6 +38,8 @@ function createMap(){
 
   //Plot User's current location
   plotCurrentLocation();
+
+  //Plot parks 
   loadMapPins(filteredParks);
 
 }
