@@ -79,9 +79,16 @@ function addMapPoint(gpsArrayResult, parkObject){
   let name = parkObject.name;
   gpsArray = JSON.parse(gpsArrayResult);
   
-  let parkMarker = L.marker([gpsArray[0].lat,gpsArray[0].lon], {icon:parkIcon}).addTo(myMap);
+  let parkMarker = L.marker([gpsArray[0].lat,gpsArray[0].lon], {icon:parkIcon});
+    
+  parkMarker.addTo(myMap);
   parkMarker.bindTooltip(name, {direction:'bottom'}, {permanent:true}).openTooltip();
 
+  parkMarker.bindPopup().on('click', function(e) {
+    let i = e.target.parkID;
+    showModal(parkObject.name);
+    myMap.closePopup();
+  });
 }
 
 //Changes View from Map View to List View and Vice Versa

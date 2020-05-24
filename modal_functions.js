@@ -11,12 +11,7 @@ function hideModal(){
 }
 
 //Hide Model when area outside of it is clicked
-window.onclick = function(event) {
-    let modalElement = document.getElementById('parkModal');
-    if (event.target.closest(".modal").length == null) {
-        modalElement.classList.remove('is-active');
-    }
-  }
+//to be implemented
 
 function buildModal(parkName){
     let currentPark = parks.find(element => element.name == parkName);
