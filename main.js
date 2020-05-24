@@ -79,21 +79,6 @@ let parks =
   ];
 let filteredParks = parks;
 //Declare and Assign Global Variables
-let apartment = 'The Biltmore'; 
-let oldApartment = 'Waterford Springs';
-let residenceHistory = 
-  [ ['Casa Moas', '8583 Ponce De Leon Rd Miami, FL 33143'], 
-    ['Lakeside complex','Radio Rd, Gainesville, FL 32611'],
-    ['Sledd Hall', '191 Fletcher Dr. Gainesville, FL'],
-    ['Retreat at City Park', '1640 E T C Jester Blvd, Houston, TX 77008'],
-    ['Keys Complex', '44 Keys Residential College, Gainesville, FL 32608'],
-    ['MLK TownHome', '100 Miriam Ave Austin, TX 78702'],
-    ['St. Joseph House', '100 SW 23rd Dr, Gainesville, FL 32607'],
-    ['Waterford Springs', '24530 Gosling Rd, Spring, TX 77389'],
-    ['The Biltmore', '10600 Six Pines Dr.']
-  ];
-let historyLength = residenceHistory.length;
-let errorMsg = `Invalid selection. Please choose a number between 1 and ${historyLength}.`;
 let gpsArray = null;
 let myMap = null;
 createMap();

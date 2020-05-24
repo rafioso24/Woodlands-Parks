@@ -3,3 +3,5 @@
 
 #dropdown{   z-index: 3}
 .body { height : 90vh; }
+
+.tile{cursor : pointer;}
